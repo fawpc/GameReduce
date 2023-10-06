@@ -1,0 +1,449 @@
+*,
+    *:before,
+    *:after {
+        margin: 0 auto;
+        padding: 0;
+        box-sizing: border-box;
+}
+
+body {
+	font-family: 'EB Garamond', serif;
+	width: 100%;
+    scrollbar-width: thin;          /* "auto" or "thin" */
+    scrollbar-color: #FD7900 black ;   /* scroll thumb and track */
+}
+
+/* Works on Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #FD7900 black;
+  }
+  
+  /* Works on Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 12px;
+  }
+  
+  *::-webkit-scrollbar-track {
+    background: black;
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    background-color: #FD7900;
+    border-radius: 20px;
+    border: 3px solid black;
+  }
+
+header {
+    grid-column: 1 / 13;
+    grid-row: 1 / 4;
+	width: 100%;
+    height: 8vh;
+	font-size: 6vh;
+	font-family: 'Abril Fatface', cursive;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;	
+}
+
+
+#tlogo {
+	background: rgb(253,121,0);
+	width: 100%;
+    height: 8vh;
+	font-size: 6vh;
+	font-family: 'Abril Fatface', cursive;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+nav{
+    position: relative;
+    width: 5%;
+}
+
+#logo {
+	font-size: 5.5vh;
+    font-family: 'Drius Straight Expanded', sans-serif;
+    height: 8vh;
+    position: relative;
+    top: 1vh;
+}
+
+#tlogo {
+	width: 100%;
+	font-size: 6vh;
+	font-family: 'Abril Fatface', cursive;
+	display: flex;
+}
+
+#valores{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: relative;
+    width: 8%;
+    right: 0%;
+}
+
+#tlogoj #logo {
+	color: #0e7a0d;
+}
+
+#tlogoj .menu {
+	background: #0e7a0d;
+}
+
+#tlogoj #hamb a {
+	color: #0e7a0d;
+}
+
+a {
+	color: #000; 
+	text-decoration: none;
+}
+.menu {
+	background: rgb(0,0,0);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    top: 30px;
+    cursor: pointer;
+    box-shadow: 0 0 0 0 #FFF, 0 0 0 0 #FFF;
+    transition: box-shadow 1.1s cubic-bezier(.19,1,.22,1);    
+}
+
+/*.menu:hover {
+    box-shadow: 0 0 0 8px #FFF, 0 0 0 8px #FFF;
+}*/
+
+.hamburguer {
+    position: relative;
+    display: block;
+    background: #FFF;
+    width: 30px;
+    height: 2px;
+    top: 29px;
+    left: 1px;
+    transition: .5s ease-in-out;
+}
+
+.hamburguer:before,
+.hamburguer:after {
+	background: #FFF;
+	background: #FFF;	
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transition: .5s ease-in-out;
+}
+
+.hamburguer:before {
+    top: -10px;
+}
+
+.hamburguer:after {
+    bottom: -10px;
+}
+
+#menu-hamburguer {
+    display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+    justify-content: center; 
+    visibility: hidden;
+    opacity: 0;
+}
+
+#menu-hamburguer:checked ~ label .hamburguer {
+    transform: rotate(45deg);
+}
+
+#menu-hamburguer:checked ~ label .hamburguer:before {
+    transform: rotate(90deg);
+    top: 0;
+}
+
+#menu-hamburguer:checked ~ label .hamburguer:after {
+    transform: rotate(90deg);
+    bottom: 0;
+}
+
+#menu-hamburguer:checked ~ #hamb {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+#menu-hamburguer:checked ~ label .menu {
+    box-shadow: 0 0 0 5vw #000, 0 0 0 95vh #000  ;opacity : 0.99;
+}
+
+#hamb {
+    position: fixed;
+    top: 50%;
+    left: 10%;
+    transform: translate(-50%, -50%);
+    list-style: none;
+    font-size: 20px;
+    opacity: 0;
+    transition: .25s .1s cubic-bezier(0, 1.07, 0, 1.02);
+    visibility: hidden;
+    z-index: 2;
+}
+
+
+#hamb a {
+    color: #FD7900;
+    opacity: 5;
+    display: block;
+    margin-bottom: 1em;
+    text-decoration: none;
+    font-size: 2vh;
+}
+
+#time {
+    color: #000;
+    background-color: #FD7900;
+    display: block;
+    text-decoration: none;
+    font-size: 2vh;
+}
+
+main {
+    grid-column: 1/ 13;
+    grid-row: 2  / 8;
+    width: 100%;
+    font-size: 1vw;
+    	
+}
+
+#dat{
+    font-size: 2vw;
+    display: flex;
+    justify-content: center;
+}
+
+footer {
+	background: #FD7900;
+	width: 100%;
+    height: 14vh;
+    grid-column: 1 / 13;
+}
+
+#redes {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	list-style: none;		
+}
+#tdjog{
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	grid-auto-rows: minmax(11.5vh, auto);
+	grid-gap: 10px;
+	width: 100%;
+    height: 100%;
+	margin: 0 auto;
+    position:relative;
+}
+#empty{
+    display: flex;
+    height: 65%;
+    width: 100%;
+    background-color: #FFF;
+}
+#full{
+    display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+    width: 100%
+}
+
+#ora{
+    display: flex;
+    background-color: rgba(253,121,0, 0.6);
+    width: 98%;
+    height: 100%;
+    position: relative;
+    font-family: 'Built Titling', sans-serif;
+}
+
+#ora p{
+    position: relative;
+    left: 34%;
+}
+
+#cron {
+    display: flex;
+	justify-content: center;
+}
+
+input{
+    font-size: 1.3vw;
+}
+
+#dados form{
+    position: relative;
+    left: 45%;
+    font-size: 1.7vw;
+}
+#ora h1{
+    display: flex;
+	justify-content: center;
+    font-size: 2.8vw;
+}
+#dados p{
+    font-size: 2vw;
+    position: relative;
+    left: 40%;
+}
+
+#dados h4{
+    position: relative;
+    left: 40%;
+}
+
+
+header p{
+    position: relative;
+    font-size: 39px;
+    top: 2vh;
+}
+
+#dados {
+    position: relative;
+    width: 90%;
+}
+
+#dados input[type=submit] {
+    position: relative;
+    left: 5%;
+}
+
+#entry {
+    display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: center; 
+}
+
+#entry input{
+    background-color: #000;
+    color: #FD7900;
+    font-size: 1vw;
+}
+
+#log{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#pac{
+    position: absolute;
+    top: 0%;
+    left: 0;
+}
+
+#pac1{
+    position: absolute;
+    top: 0%;
+    right: 0;
+}
+
+#empty a{
+    position: relative;
+    bottom: 0%;
+    right: 0%;
+}
+
+
+
+@media only screen and (max-width: 1258px) {
+    #logo {
+        font-size: 3.5vh;
+        font-family: 'Drius Straight Expanded', sans-serif;
+        height: 8vh;
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        position: relative;
+        top: 1vh;
+    }
+    header {
+        height: 10vh;
+        display: flex;
+        flex-direction: row;
+    }
+    
+    header img{
+        width: 30;
+        height: 30;
+    }
+
+    #tlogo {
+        height: 10vh;
+    }
+    #hamb {
+        left: 20%;
+        top: 51%;
+    }
+
+
+    footer a{
+        font-size: 3vh;
+    }
+}
+
+#bo{
+    position: relative;
+    width: 100%;
+    left: 45%;
+}
+
+#play1{
+    position: relative;
+    right: 1%;
+}
+
+#play3{
+    position: relative;
+    left: 1%;
+}
+
+@media only screen and (max-width: 1890px) {
+    #pac{
+        width: 8%;
+    }
+    
+    #pac1{
+        width: 8%;
+    }
+}
+
+@media only screen and (max-width: 2393px) {
+    #valores{
+        width: 12%;
+    }
+}
+
+@media only screen and (max-width: 1596PX) {
+    #valores{
+        width: 22%;
+    }
+}
+
+@media only screen and (max-width: 871PX) {
+    #valores{
+        width: 38%;
+    }
+}
