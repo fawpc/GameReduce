@@ -1,43 +1,79 @@
 const express = require('express');
-const path = require('path');
 const app = express();
+const cors = require('cors');
+const loginRoute = require('./routes/loginRoute');
+const coinRoute = require('./routes/coinRoute');
+const statsRoute = require('./routes/statsRoute');
+const moedasRoute = require('./routes/moedasRoute');
+const premioRoute = require('./routes/premioRoute');
+const othersRoute = require('./routes/othersRoute');
+const gameRoute = require('./routes/gameRoute');
+const focusRoute = require('./routes/focusRoute');
+const allGameRoute = require('./routes/allGameRoute');
+const allFocusRoute = require('./routes/allFocusRoute');
+const allStylesRoute = require('./routes/allStylesRoute');
+const upGameRoute = require('./routes/upGameRoute');
+const upFocusRoute = require('./routes/upFocusRoute');
+const metasRoute = require('./routes/metasRoute');
+const mt1Route = require('./routes/mt1Route');
+const ptdiaRoute = require('./routes/ptdiaRoute');
+const createRoute = require('./routes/createRoute');
+const resgateRoute = require('./routes/resgateRoute');
+const resgFeitosRoute = require('./routes/resgFeitosRoute');
 
-// Define o caminho para a pasta 'public'
-const publicPath = path.join(__dirname, '../Front-end');
+if (process.env.NODE_ENV === 'production') {
+    app.use(enforce.HTTPS({ trustProtoHeader: true }));
+}
 
-// Define o diretório 'public' como um diretório estático
-app.use(express.static(publicPath));
+app.use(cors());
 
-// Configuração das rotas
-app.get('/', (req, res) => {
-    res.sendFile(path.join(publicPath, 'index.html'));
-});
 
-app.get('/focus', (req, res) => {
-    res.sendFile(path.join(publicPath, 'focus.html'));
-});
+app.use(express.json()); 
 
-app.get('/form', (req, res) => {
-    res.sendFile(path.join(publicPath, 'form.html'));
-});
+app.use('/login', loginRoute);
 
-app.get('/metas', (req, res) => {
-    res.sendFile(path.join(publicPath, 'metas.html'));
-});
+app.post('/create', createRoute);
 
-app.get('/moedas', (req, res) => {
-    res.sendFile(path.join(publicPath, 'moedas.html'));
-});
+const verifyToken = require('./middlewares/verifyToken');
 
-app.get('/premios', (req, res) => {
-    res.sendFile(path.join(publicPath, 'premios.html'));
-});
+app.post('/coin', verifyToken, coinRoute);
 
-app.get('/stats', (req, res) => {
-    res.sendFile(path.join(publicPath, 'stats.html'));
-});
+app.post('/stats', verifyToken, statsRoute);
 
-const PORT = process.env.PORT || 3000;
+app.post('/moedas', verifyToken, moedasRoute);
+
+app.post('/premios', verifyToken, premioRoute);
+
+app.post('/otherspremios', verifyToken, othersRoute);
+
+app.post('/game', verifyToken, gameRoute);
+
+app.post('/focus', verifyToken, focusRoute);
+
+app.post('/metas', verifyToken, metasRoute);
+
+app.post('/meta1', verifyToken, mt1Route);
+
+app.post('/ptdia', verifyToken, ptdiaRoute);
+
+app.post('/resg', verifyToken, resgateRoute);
+
+app.post('/rfeitos', verifyToken, resgFeitosRoute);
+
+app.put('/upgame',verifyToken,upGameRoute);
+
+app.put('/upfocus',verifyToken,upFocusRoute);
+
+app.get('/allgame', allGameRoute);
+
+app.get('/allfocus', allFocusRoute);
+
+app.get('/allstyles', allStylesRoute);
+
+
+
+
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
