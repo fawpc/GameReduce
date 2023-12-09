@@ -1,6 +1,5 @@
 const express = require('express');
 const app = express();
-const cors = require('cors');
 const loginRoute = require('./routes/loginRoute');
 const coinRoute = require('./routes/coinRoute');
 const statsRoute = require('./routes/statsRoute');
@@ -20,8 +19,6 @@ const ptdiaRoute = require('./routes/ptdiaRoute');
 const createRoute = require('./routes/createRoute');
 const resgateRoute = require('./routes/resgateRoute');
 const resgFeitosRoute = require('./routes/resgFeitosRoute');
-
-app.use(cors());
 
 app.use(express.json()); 
 
