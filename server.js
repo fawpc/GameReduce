@@ -21,12 +21,7 @@ const createRoute = require('./routes/createRoute');
 const resgateRoute = require('./routes/resgateRoute');
 const resgFeitosRoute = require('./routes/resgFeitosRoute');
 
-if (process.env.NODE_ENV === 'production') {
-    app.use(enforce.HTTPS({ trustProtoHeader: true }));
-}
-
 app.use(cors());
-
 
 app.use(express.json()); 
 
@@ -69,8 +64,6 @@ app.get('/allgame', allGameRoute);
 app.get('/allfocus', allFocusRoute);
 
 app.get('/allstyles', allStylesRoute);
-
-
 
 
 const PORT = process.env.PORT || 3001;
