@@ -75,9 +75,9 @@ const MainPremios = () => {
     
       const closeModal = () => {
         setModalIsOpen(false);
-        setTimeout(() => {
+        /*setTimeout(() => {
             window.location.reload();
-          }, 3000);
+          }, 3000);*/
       };
     
 
@@ -133,6 +133,24 @@ const MainPremios = () => {
       .catch(error => {
         console.error('Erro ao obter número de moedas:', error);
       });
+
+    const getFontSizeBasedOnScreenWidth = () => {
+        const screenWidth = window.innerWidth;
+        if (screenWidth <= 1258) {
+        return '70%'; 
+        } else {
+        return '30%';
+        }
+    };
+
+    const getPositionBasedOnScreenWidth = () => {
+        const screenWidth = window.innerWidth;
+        if (screenWidth <= 1258) {
+        return '17%'; 
+        } else {
+        return '35%';
+        }
+    };  
 
     return (
         <main id="dat">
@@ -209,7 +227,11 @@ const MainPremios = () => {
                                   WebkitOverflowScrolling: 'touch',
                                   borderRadius: '4px',
                                   outline: 'none',
-                                  padding: '20px'
+                                  padding: '20px',
+                                // eslint-disable-next-line
+                                  width: getFontSizeBasedOnScreenWidth(),
+                                 // eslint-disable-next-line
+                                  left:getPositionBasedOnScreenWidth()
                                 }
                               }}
                         >

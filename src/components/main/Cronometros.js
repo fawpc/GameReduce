@@ -126,9 +126,9 @@ const Cronometros = ({ tempofeito, tempoMax}) => {
             const tempoInvisivelFormatado = formatTime(tempoInvisivel);
             setTempoInvisivel(0);
             sendDataToBackend('fim', tempoInvisivelFormatado);
-            setTimeout(() => {
+            /*setTimeout(() => {
                 window.location.reload();
-              }, 3000);
+              }, 3000);*/
           }
     };
 

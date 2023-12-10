@@ -77,7 +77,7 @@ const Header = () => {
 
         <Link to='/main' id={styles.logo}>Game Reduce</Link>
         <div id={styles.valores}>
-          <Link to='/main'><img src="../imagens/bell.png" alt="sino" width="60" height="60" id={styles.noti} /></Link>
+         
           <Link to='/moedas'><img src="../imagens/coin.png" alt="sino" width="60" height="60" id={styles.moeda} /></Link>
           {isLoggedIn &&<p>{numeroMoedas}</p>}
         </div>

@@ -126,9 +126,9 @@ const Cronometro = ({ focusfeito, tempo}) => {
             const focusInvisivelFormatado = formatTime(focusInvisivel);
             setfocusInvisivel(0);
             sendDataToBackend('fim', focusInvisivelFormatado);
-            setTimeout(() => {
+            /*setTimeout(() => {
                 window.location.reload();
-              }, 3000);
+              }, 3000);*/
           }
     };
 
