@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const loginRoute = require('./routes/loginRoute');
 const coinRoute = require('./routes/coinRoute');
 const statsRoute = require('./routes/statsRoute');
@@ -19,6 +20,10 @@ const ptdiaRoute = require('./routes/ptdiaRoute');
 const createRoute = require('./routes/createRoute');
 const resgateRoute = require('./routes/resgateRoute');
 const resgFeitosRoute = require('./routes/resgFeitosRoute');
+const editRoute = require('./routes/editRoute');
+
+app.use(cors());
+
 
 app.use(express.json()); 
 
@@ -52,6 +57,8 @@ app.post('/resg', verifyToken, resgateRoute);
 
 app.post('/rfeitos', verifyToken, resgFeitosRoute);
 
+app.put('/edit', verifyToken, editRoute);
+
 app.put('/upgame',verifyToken,upGameRoute);
 
 app.put('/upfocus',verifyToken,upFocusRoute);
@@ -61,6 +68,8 @@ app.get('/allgame', allGameRoute);
 app.get('/allfocus', allFocusRoute);
 
 app.get('/allstyles', allStylesRoute);
+
+
 
 
 const PORT = process.env.PORT || 3001;
