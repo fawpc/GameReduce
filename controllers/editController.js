@@ -6,22 +6,22 @@ async function editUser(req, res) {
 
   const updateFields = {};
 
-  if (nome !== undefined) {
+  if (nome !== undefined && nome !== '') {
     updateFields.nome = nome;
   }
-  if (senha !== undefined) {
+  if (senha !== undefined && senha !== '') {
     updateFields.senha = senha;
   }
-  if (datanasc !== undefined) {
+  if (datanasc !== undefined && datanasc !==  '') {
     updateFields.datanasc = datanasc;
   }
-  if (fk_perfil !== undefined) {
+  if (fk_perfil !== undefined && fk_perfil !== '') {
     updateFields.fk_perfil = fk_perfil;
   }
-  if (fk_game !== undefined) {
+  if (fk_game !== undefined && fk_game !== '') {
     updateFields.fk_game = fk_game;
   }
-  if (fk_focus !== undefined) {
+  if (fk_focus !== undefined && fk_focus !== '') {
     updateFields.fk_focus = fk_focus;
   }
 
