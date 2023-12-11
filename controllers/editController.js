@@ -35,7 +35,7 @@ async function editUser(req, res) {
     }
 
     const updateQuery = `UPDATE usuario SET (${fieldsToUpdate.join(', ')}) = (${fieldValues.map((_, i) => `$${i + 1}`).join(', ')}) WHERE idu = $${fieldsToUpdate.length + 1}`;
-    await db.one(updateQuery, [...fieldValues, idU]);
+    await db.none(updateQuery, [...fieldValues, idU]);
 
     res.status(201).send('Usuário atualizado com sucesso.');
   } catch (error) {
