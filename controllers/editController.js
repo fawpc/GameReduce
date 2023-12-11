@@ -34,9 +34,15 @@ async function editUser(req, res) {
       return res.status(400).send('Nenhum campo para atualização foi fornecido.');
     }
 
-    const updateQuery = `UPDATE usuario SET (${fieldsToUpdate.join(', ')}) = (${fieldValues.map((_, i) => `$${i + 1}`).join(', ')}) WHERE idu = $${fieldsToUpdate.length + 1}`;
-    await db.none(updateQuery, [...fieldValues, idU]);
+    let updateQuery = '';
+    if (fieldsToUpdate.length === 1) {
+      const field = fieldsToUpdate[0];
+      updateQuery = `UPDATE usuario SET ${field} = $1 WHERE idu = $2`;
+    } else {
+      updateQuery = `UPDATE usuario SET (${fieldsToUpdate.join(', ')}) = (${fieldValues.map((_, i) => `$${i + 1}`).join(', ')}) WHERE idu = $${fieldsToUpdate.length + 1}`;
+    }
 
+    await db.none(updateQuery, [...fieldValues, idU]);
     res.status(201).send('Usuário atualizado com sucesso.');
   } catch (error) {
     console.error('Erro ao atualizar o usuário:', error);
