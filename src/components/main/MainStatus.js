@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import styles from '../../style.module.css';
 import WithAuth from './withAuth';
 
@@ -56,7 +57,8 @@ const MainStatus = () => {
                                 Limite diário: {userData.tempomax.hours} horas = ({userData.pontos_gametime} <img src="../imagens/coin.png" alt="sino" width="30" height="30" /> por dia)<br />
                                 Tempo de foco: {userData.tempo.hours} horas = ({userData.pontos_focustime} <img src="../imagens/coin.png" alt="sino" width="30" height="30" /> por dia)<br />
                                 Moedas: {userData.valor} <img src="../imagens/coin.png" alt="sino" width="30" height="30" /> <br />
-                                Último Resgate: {userData.dataresgate ? `${formatarData(userData.dataresgate)}` : 'Sem resgates anteriores'}
+                                Último Resgate: {userData.dataresgate ? `${formatarData(userData.dataresgate)}` : 'Sem resgates anteriores'}<br /><br /><br /><br /><br /><br /><br />
+                                <Link to='/edit' id={styles.subz}>         Para editar seu perfil clique aqui !!!</Link>
                             </p>
                         ) : (
                             <p>Carregando dados...</p>

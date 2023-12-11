@@ -656,6 +656,11 @@ h5 a{
         font-size: x-large;
     }
 
+    #logo{
+        width: 40%;
+        font-size: 2.5vh;
+    }
+
     .ruler {
         position: relative;
       }
@@ -690,13 +695,14 @@ h5 a{
         width: 108%;
     }
 
-}    
+}
 
 @media only screen and (max-height: 900px){
     /*#logo{
         width: 40%;
         font-size: 2.5vh;
     }*/
+
 
     #hamb{
         left: 26%;
@@ -764,8 +770,7 @@ h5 a{
 
 
     #valores{
-        height: 100%;
-        width: 34%;
+        height: 100%;   
     }
     #valores a{
         width: 19%;
@@ -773,7 +778,7 @@ h5 a{
     }
     #valores img{
         width: 100%;
-        height: 150%;
+        height: 200%;
     }
     #valores p{
         font-size: 65%;
