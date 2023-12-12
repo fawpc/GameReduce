@@ -396,7 +396,7 @@ const MainMetas = () => {
                         <p>
                             4 Horas:<br />
                             pontos máx:
-                            30 <img src="../imagens/coin.png" alt="sino"width="30" height="30" /><br />
+                            40 <img src="../imagens/coin.png" alt="sino"width="30" height="30" /><br />
                             3 Horas:<br />
                             pontos máx:
                             30 <img src="../imagens/coin.png" alt="sino"width="30" height="30" /><br />
