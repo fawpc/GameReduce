@@ -80,6 +80,11 @@ nav{
 	display: flex;
 }
 
+#foca{
+    display: flex;
+    justify-content: center;   
+}
+
 #valores{
     display: flex;
     flex-direction: row;
@@ -186,7 +191,7 @@ a {
 
 #hamb {
     position: fixed;
-    top: 50%;
+    top: 55%;
     left: 10%;
     transform: translate(-50%, -50%);
     list-style: none;
@@ -251,8 +256,9 @@ footer {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	list-style: none;		
+	list-style: none;	
 }
+
 #tdjog{
 	display: grid;
 	grid-template-columns: repeat(12, 1fr);
@@ -277,6 +283,16 @@ footer {
     width: 100%
 }
 
+#forms{
+    display: flex;
+	justify-content: center;     
+}
+
+#cro{
+    display: flex;
+	justify-content: center;      
+}
+
 #ora{
     display: flex;
     background-color: rgba(253,121,0, 0.6);
@@ -286,22 +302,32 @@ footer {
     font-family: 'Built Titling', sans-serif;
 }
 
-
+#subz{
+    display: flex;
+	justify-content: center;   
+}
 
 #cron {
     display: flex;
 	justify-content: center;
 }
 
+.centralizar{
+    display: flex;
+    flex-direction: column;
+	justify-content: center;  
+}
+
+.centralize{
+    display: flex;
+	justify-content: center;
+    font-size: 1.5vw;   
+}
+
 input{
     font-size: 1.3vw;
 }
 
-#dados form{
-    position: relative;
-    left: 45%;
-    font-size: 1.7vw;
-}
 #ora h1{
     display: flex;
 	justify-content: center;
@@ -315,7 +341,7 @@ input{
 
 header p{
     position: relative;
-    font-size: 39px;
+    font-size: 35px;
     top: 2vh;
 }
 
@@ -324,9 +350,8 @@ header p{
     width: 90%;
 }
 
-#dados input[type=submit] {
-    position: relative;
-    left: 5%;
+header ul{
+    height: 100%;
 }
 
 #entry {
@@ -346,6 +371,8 @@ header p{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    position: relative;
+    left: 5%;
 }
 
 #pac{
@@ -386,12 +413,67 @@ h5 a{
     color: #FD7900;   
 }
 
+#log{
+    top: 60%;
+}
 
 #saldao{
     display: flex;
     justify-content: center;   
 }
 
+#nothing{
+    opacity: 0;
+    visibility: hidden;
+}
+
+
+.butLogout{
+    background-color: transparent;
+    border: 0;
+    color:#FD7900;    
+    font-size: 1vw;
+}
+
+.butons{
+    background-color: transparent;
+    border: 0;
+    font-size: xx-large; 
+    text-decoration: underline;
+}
+
+#formCad .ps {
+    font-size: x-large;
+}
+
+#play1:hover,
+#play2:hover,
+#play3:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+#play1:active,
+#play2:active,
+#play3:active {
+  opacity: 0.7;
+  transition: opacity 0.1s ease;
+}
+
+@media only screen and (max-width: 1290px) {
+    #logo {
+        font-size: 3.5vh;
+        font-family: 'Drius Straight Expanded', sans-serif;
+        height: 8vh;
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        position: relative;
+        top: 1vh;
+    }
+}
 
 
 @media only screen and (max-width: 1258px) {
@@ -430,6 +512,32 @@ h5 a{
     footer a{
         font-size: 3vh;
     }
+
+    h3{
+        font-size: 3vh;
+    }
+    form{
+        font-size: xx-large;
+    }
+    main li{
+        font-size: xx-large;
+    }
+    #subz{
+        font-size: xx-large; 
+    }
+    .butLogout{
+        font-size: xx-large; 
+    }
+    form input{
+        font-size: xx-large;  
+    }
+
+    .centralize{
+        display: flex;
+        justify-content: center;
+        font-size: xx-large;   
+    }
+
 }
 
 
@@ -492,7 +600,7 @@ h5 a{
   
   .value {
     text-align: center;
-    width: 33.33%; /* Para garantir que os valores estejam alinhados corretamente */
+    width: 33.33%; 
   }
 
 @media only screen and (max-width: 2393px) {
@@ -507,10 +615,14 @@ h5 a{
     }
 }
 
-@media only screen and (max-width: 871PX) {
+
+@media only screen and (max-width: 1596PX) {
     #valores{
         width: 38%;
     }
+}
+
+@media only screen and (max-width: 871PX) {
     #pac{
         width: 0%;
     }
@@ -534,32 +646,145 @@ h5 a{
         width: 60%;
         height: 40%;
     }
-}
 
-@media only screen and (max-height: 1080px){
-    header{
-        height: 26%;
+    #saldao img{
+        position: relative;
+        top: 2%;
     }
-    #tlogo{
-        height: 100%;
+
+    #formCad input{
+        font-size: medium;
+    }
+
+    #formCad select{
+        font-size: medium;
+        width: 80%;
+    }
+
+
+    #ps p{
+        font-size: medium;
+    }
+
+    .butons{
+        font-size: x-large;
     }
 
     #logo{
         width: 40%;
         font-size: 2.5vh;
     }
+
+    .ruler {
+        position: relative;
+      }
+      
+      .line {
+        width: 100%;
+        height: 4px;
+      }
+      
+      .marks {
+        width: 100%;
+        top: 0;
+      }
+      
+      .mark {
+        width: 4px;
+        height: 10px;
+      }
+      
+      .values {
+        width: 100%;
+      }
+      
+      .value {
+        width: 33.33%;
+        font-size: x-large;
+      }
+}
+
+@media only screen and (max-width: 371PX) {
+    #formCad{
+        width: 108%;
+    }
+
+}
+
+@media only screen and (max-height: 900px){
+    /*#logo{
+        width: 40%;
+        font-size: 2.5vh;
+    }*/
+
+
+    #hamb{
+        left: 26%;
+        top: 55%;
+    }   
+}
+
+@media only screen and (max-height: 779px){
+    header{
+        height: 28%; 
+    }
+
+}
+
+@media only screen and (max-height: 779px){
+    header{
+        height: 28%; 
+    }
+    #logo{
+        width: 40%;
+        font-size: 2.5vh;
+    }
+    #valores{
+        width: 38%;
+    }
+}
+@media only screen and (max-height: 700px){
     .menu{
-        height: 40%;
-        width: 150%;
+        height: 55%;
+        width: 155%;
         top: 25vh;
     }
     .hamburguer{
         width: 55%;
         top: 50%;
     }
-    #valores{
+}
+
+@media only screen and (max-width: 550px){
+    .menu{
+        height: 55%;
+        width: 155%;
+        top: 25vh;
+    }
+    .hamburguer{
+        width: 55%;
+        top: 50%;
+    }
+}
+
+@media only screen and (max-height: 1080px){
+
+    #tlogo{
         height: 100%;
-        width: 34%;
+    }
+
+    header ul{
+        height: 100%;
+    }
+
+    #log{
+        top: 60%;
+    }
+
+
+
+    #valores{
+        height: 100%;   
     }
     #valores a{
         width: 19%;
@@ -567,10 +792,15 @@ h5 a{
     }
     #valores img{
         width: 100%;
-        height: 100%;
+        height: 200%;
     }
     #valores p{
         font-size: 65%;
+    }
+
+    header p{
+        top: 9%;
+
     }
 
     footer{
@@ -582,5 +812,16 @@ h5 a{
     #empty img{
         height: 10vh;
         width: 80%;
+    }
+}
+
+@media only screen and (min-height: 1080px){
+    #logo{
+        font-size: 4.5vh;
+    }
+
+    #hamb{
+        left: 06%;
+        top: 58%;
     }
 }

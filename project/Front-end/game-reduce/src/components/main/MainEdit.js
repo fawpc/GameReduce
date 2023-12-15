@@ -4,13 +4,23 @@ import styles from '../../style.module.css';
 import {useNavigate , Redirect  } from 'react-router-dom';
 import Modal from 'react-modal';
 
-const MainCadastro = () => {
+function isUserLoggedIn1() {
+    return !!localStorage.getItem('auth-token');
+  }
+  function getId() {
+    if (isUserLoggedIn1()) {
+      return localStorage.getItem('idU');
+    }
+    return null;
+  }
+
+const MainEdit = () => {
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [modalContent, setModalContent] = useState({ title: '', message: '', gifUrl: '' });
     const navigate  = useNavigate ();
+    const idU = getId();
     const [formValues, setFormValues] = useState({
         nome: '',
-        email: '',
         senha: '',
         datanasc: '',
         fk_perfil: '',
@@ -31,70 +41,33 @@ const MainCadastro = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const validateEmail = (email) => {
-          const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-          return regex.test(email);
-        };
+        if (!formValues.nome && !formValues.senha && !formValues.datanasc  && !formValues.fk_perfil  && !formValues.fk_game  && !formValues.fk_focus) {
+            console.error('Se pretende editar seu perfil ao menos preencha algum campo.');
+            setErrorMessage('Se pretende editar seu perfil ao menos preencha algum campo.');
+            return;
+          }
 
-        if (!validateEmail(formValues.email)) {
-          console.error('Por favor, insira um e-mail válido.');
-          setErrorMessage('Por favor, insira um e-mail válido.');
-          return;
-        }
-        if (!formValues.nome) {
-            console.error('Por favor, preencha o campo de nome.');
-            setErrorMessage('Por favor, preencha o campo de nome.');
-            return;
-          }
-        if (!formValues.email) {
-            console.error('Por favor, preencha o campo de email.');
-            setErrorMessage('Por favor, preencha o campo de email.');
-            return;
-          }
-        if (!formValues.senha) {
-            console.error('Por favor, preencha o campo de senha.');
-            setErrorMessage('Por favor, preencha o campo de senha.');
-            return;
-          }
-        if ( !formValues.datanasc) {
-            console.error('Por favor, preencha o campo de data de nascimento.');
-            setErrorMessage('Por favor, preencha o campo de data de nascimento.');
-            return;
-          }     
-        if (!formValues.fk_perfil) {
-            console.error('Por favor, selecione uma opção válida de estilo.');
-            setErrorMessage('Por favor, selecione uma opção válida de estilo.');
-            return;
-          } 
-        if (!formValues.fk_game) {
-            console.error('Por favor, selecione uma opção válida de Game Time.');
-            setErrorMessage('Por favor, selecione uma opção válida de Game Time.');
-            return;
-          } 
-        if (!formValues.fk_focus) {
-            console.error('Por favor, selecione uma opção de Focus Time.');
-            setErrorMessage('Por favor, selecione uma opção de Focus Time.');
-            return;
-          } 
         setErrorMessage('');
 
         try {
-          const response = await fetch('https://gamereduceback.azurewebsites.net/create', {
-            method: 'POST',
+          const response = await fetch('https://gamereduceback.azurewebsites.net/edit', {
+            method: 'PUT',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'auth-token': localStorage.getItem('auth-token'),
+                'idu': idU
             },
             body: JSON.stringify(formValues)
           });
       
           if (response.ok) {
-            console.log('Usuário cadastrado com sucesso!');
-            navigate('/');
+            console.log('Usuário atualizado com sucesso!');
+            navigate('/status');
           } else {
-            console.error('Falha ao cadastrar usuário. Status:', response.status);
+            console.error('Falha ao atualizar usuário. Status:', response.status);
           }
         } catch (error) {
-          console.error('Erro ao cadastrar usuário:', error);
+          console.error('Erro ao atualizar usuário:', error);
         }
       };
 
@@ -178,11 +151,10 @@ const MainCadastro = () => {
         <main>
             <div id={styles.ora}>
                 <div id={styles.dados}>
-                    <h1>Cadastro</h1>
+                    <h1>Alterar Cadastro</h1>
                     <div id={styles.forms}>
                         <form onSubmit={handleSubmit} id={styles.formCad}>
                             Nome: <input type="text" name="nome" value={formValues.nome} onChange={handleInputChange} /><br />
-                            Email: <input type="text" name="email" value={formValues.email} onChange={handleInputChange} /><br />
                             Senha: <input type="password" name="senha" value={formValues.senha} onChange={handleInputChange} /><br />
                             Data de nascimento:  <input type="date" name="datanasc" value={formValues.datanasc} onChange={handleInputChange} /><br />
                             <select name="fk_perfil" value={formValues.fk_perfil} onChange={handleInputChange}>
@@ -209,7 +181,7 @@ const MainCadastro = () => {
                                 </option>
                                 ))}
                             </select><p className={styles.ps}>O que é Focus Time? <button className={styles.butons} onClick={show1}>Clique Aqui</button></p><br /><br />
-                            <input type="submit" value="Cadastrar" id={styles.subz}/><br /><br /><br />
+                            <input type="submit" value="Alterar" id={styles.subz}/><br /><br /><br />
                             <div id="errorMessage">{errorMessage}</div>
                         </form>
                         <Modal
@@ -264,4 +236,4 @@ const MainCadastro = () => {
     );
 }
 
-export default MainCadastro;
+export default MainEdit;
