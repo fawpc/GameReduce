@@ -14,8 +14,8 @@ const Footer = () => {
       </div>
       <div id={styles.full}>
         <ul id={styles.redes}>
-          <li><Link to="/main" target="_blank"><img src="https://img.icons8.com/ios-filled/50/000000/instagram-new.png" alt="instagram" /></Link></li>
-          <li><Link to="/main" target="_blank"><img src="https://img.icons8.com/ios-filled/50/000000/facebook-circled.png" alt="facebook" /></Link></li>
+          <li><Link to="/main"><img src="https://img.icons8.com/ios-filled/50/000000/instagram-new.png" alt="instagram" /></Link></li>
+          <li><Link to="/main"><img src="https://img.icons8.com/ios-filled/50/000000/facebook-circled.png" alt="facebook" /></Link></li>
         </ul>
       </div>
     </footer>

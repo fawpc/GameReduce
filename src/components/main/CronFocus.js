@@ -11,12 +11,20 @@ const Cronometro = ({ focusfeito, tempo}) => {
     }
   
     function formatTime(totalSeconds) {
-      const hours = Math.floor(totalSeconds / 3600);
-      const minutes = Math.floor((totalSeconds % 3600) / 60);
-      const seconds = totalSeconds % 60;
-      const formattedTime = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+      const isNegative = totalSeconds < 0;
+      const absSeconds = Math.abs(totalSeconds);
+      const hours = Math.floor(absSeconds / 3600);
+      const minutes = Math.floor((absSeconds % 3600) / 60);
+      const seconds = absSeconds % 60;
+      
+      const formattedHours = String(hours).padStart(2, '0');
+      const formattedMinutes = String(minutes).padStart(2, '0');
+      const formattedSeconds = String(seconds).padStart(2, '0');
+    
+      const formattedTime = `${isNegative ? '-' : ''}${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
       return formattedTime;
     }
+
     const [isRunning, setIsRunning] = useState(false);
     const [focusInvisivel, setfocusInvisivel] = useState(0);
     const [focusDecrescente, setfocusDecrescente] = useState(0);
@@ -38,7 +46,7 @@ const Cronometro = ({ focusfeito, tempo}) => {
 
   function exibirAviso30MinutosRestantes() {
     const tempoRestante = focusDecrescenteAtual
-    if (tempoRestante <= 30 * 60) {
+    if (tempoRestante <= 30 * 60 && tempoRestante > 10 * 60) {
       console.log('Restam 30 minutos!');
       openModal('Atenção Restam Menos de 30 minutos! de Focus Time', 'TEMPO RESTANTE: ');
     }
@@ -54,12 +62,19 @@ const Cronometro = ({ focusfeito, tempo}) => {
 
   function exibirAvisoTeste() {
     const tempoRestante = focusDecrescenteAtual
-    if (tempoRestante <= 159 * 60) { 
+    if (tempoRestante <= 159 * 60 && tempoRestante > 30 * 60) { 
       console.log('Restam xx minutos!');
       openModal('Atenção Restam Menos de xx minutos! de Focus Time', 'TEMPO RESTANTE: ');
     }
   }
 
+  function exibirAvisoEstouro() {
+    const tempoRestante = focusDecrescenteAtual
+    if (tempoRestante < 0) { 
+      console.log('Limite ultrapassado!');
+      openModal('Atenção você já cumpriu sua meta de Focus Time !!! Mas sinta-se a vontade para continuar focado /o/', 'TEMPO RESTANTE: ');
+    }
+  }
     useEffect(() => {
       const secondstempo = timeStringToSeconds(tempo);
       const secondsfocusfeito = timeStringToSeconds(focusfeito);
@@ -83,6 +98,7 @@ const Cronometro = ({ focusfeito, tempo}) => {
               exibirAviso30MinutosRestantes();
               exibirAviso10MinutosRestantes();
               exibirAvisoTeste();
+              exibirAvisoEstouro();
               count = 0;
             }
             setTempoRestanteModal(formatTime(prevfocus)); 
@@ -126,9 +142,9 @@ const Cronometro = ({ focusfeito, tempo}) => {
             const focusInvisivelFormatado = formatTime(focusInvisivel);
             setfocusInvisivel(0);
             sendDataToBackend('fim', focusInvisivelFormatado);
-            setTimeout(() => {
+            /*setTimeout(() => {
                 window.location.reload();
-              }, 3000);
+              }, 3000);*/
           }
     };
 
@@ -207,9 +223,9 @@ const Cronometro = ({ focusfeito, tempo}) => {
       <p id={styles.cro}>{formatTime(focusDecrescenteAtual)}</p> <br />
       <div id={styles.didadi}>
         <div id={styles.bo}>
-            <img src="../imagens/play.png" alt="start" width="90" height="90" id="play1" onClick={handleStart} />
-            <img src="../imagens/stop.png" alt="stop" width="90" height="90" id="play2" onClick={handleStop} />
-            <img src="../imagens/pause.png" alt="pause" width="90" height="90" id="play3" onClick={handlePause} />
+            <img src="../imagens/play.png" alt="start" width="90" height="90" id={styles.play1} onClick={handleStart} />
+            <img src="../imagens/stop.png" alt="stop" width="90" height="90" id={styles.play2} onClick={handleStop} />
+            <img src="../imagens/pause.png" alt="pause" width="90" height="90" id={styles.play3} onClick={handlePause} />
         </div>
       </div>
       <Modal

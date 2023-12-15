@@ -11,6 +11,7 @@ import Focus from './pages/focus';
 import Cadastro from './pages/cadastro';
 import Login from './pages/login';
 import Games from './pages/games';
+import Edit from './pages/edit';
 
 function App() {
   return (
@@ -26,10 +27,11 @@ function App() {
           <Route path="/cadastro" element={<Cadastro />} />
           <Route path="/" element={<Login />} />
           <Route path="/main" element={<Games />} />
+          <Route path="/edit" element={<Edit />} />
         </Routes>
         <Footer />
       </div>
-      av
+      faw
     </Router>
   );
 }

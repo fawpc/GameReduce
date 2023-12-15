@@ -372,6 +372,7 @@ header ul{
     flex-direction: row;
     flex-wrap: wrap;
     position: relative;
+    left: 5%;
 }
 
 #pac{
@@ -443,6 +444,35 @@ h5 a{
 
 #formCad .ps {
     font-size: x-large;
+}
+
+#play1:hover,
+#play2:hover,
+#play3:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+#play1:active,
+#play2:active,
+#play3:active {
+  opacity: 0.7;
+  transition: opacity 0.1s ease;
+}
+
+@media only screen and (max-width: 1290px) {
+    #logo {
+        font-size: 3.5vh;
+        font-family: 'Drius Straight Expanded', sans-serif;
+        height: 8vh;
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        position: relative;
+        top: 1vh;
+    }
 }
 
 
@@ -585,10 +615,14 @@ h5 a{
     }
 }
 
-@media only screen and (max-width: 871PX) {
+
+@media only screen and (max-width: 1596PX) {
     #valores{
         width: 38%;
     }
+}
+
+@media only screen and (max-width: 871PX) {
     #pac{
         width: 0%;
     }
@@ -627,9 +661,6 @@ h5 a{
         width: 80%;
     }
 
-    #formCad{
-        width: 108%;
-    }
 
     #ps p{
         font-size: medium;
@@ -637,6 +668,11 @@ h5 a{
 
     .butons{
         font-size: x-large;
+    }
+
+    #logo{
+        width: 40%;
+        font-size: 2.5vh;
     }
 
     .ruler {
@@ -668,22 +704,71 @@ h5 a{
       }
 }
 
+@media only screen and (max-width: 371PX) {
+    #formCad{
+        width: 108%;
+    }
+
+}
+
 @media only screen and (max-height: 900px){
-    #logo{
+    /*#logo{
         width: 40%;
         font-size: 2.5vh;
-    }
+    }*/
+
 
     #hamb{
         left: 26%;
         top: 55%;
+    }   
+}
+
+@media only screen and (max-height: 779px){
+    header{
+        height: 28%; 
+    }
+
+}
+
+@media only screen and (max-height: 779px){
+    header{
+        height: 28%; 
+    }
+    #logo{
+        width: 40%;
+        font-size: 2.5vh;
+    }
+    #valores{
+        width: 38%;
+    }
+}
+@media only screen and (max-height: 700px){
+    .menu{
+        height: 55%;
+        width: 155%;
+        top: 25vh;
+    }
+    .hamburguer{
+        width: 55%;
+        top: 50%;
+    }
+}
+
+@media only screen and (max-width: 550px){
+    .menu{
+        height: 55%;
+        width: 155%;
+        top: 25vh;
+    }
+    .hamburguer{
+        width: 55%;
+        top: 50%;
     }
 }
 
 @media only screen and (max-height: 1080px){
-    header{
-        height: 28%;
-    }
+
     #tlogo{
         height: 100%;
     }
@@ -696,21 +781,10 @@ h5 a{
         top: 60%;
     }
 
-    #logo{
-        width: 40%;
-    }
-    .menu{
-        height: 55%;
-        width: 155%;
-        top: 25vh;
-    }
-    .hamburguer{
-        width: 55%;
-        top: 50%;
-    }
+
+
     #valores{
-        height: 100%;
-        width: 34%;
+        height: 100%;   
     }
     #valores a{
         width: 19%;
@@ -718,7 +792,7 @@ h5 a{
     }
     #valores img{
         width: 100%;
-        height: 150%;
+        height: 200%;
     }
     #valores p{
         font-size: 65%;

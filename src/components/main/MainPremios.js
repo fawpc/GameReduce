@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import styles from '../../style.module.css';
 import WithAuth from './withAuth';
 import Modal from 'react-modal';
-
+// eslint-disable-next-line
+import {useNavigate , Redirect  } from 'react-router-dom';
 function isUserLoggedIn1() {
     return !!localStorage.getItem('auth-token');
   }
@@ -17,6 +18,7 @@ const MainPremios = () => {
     const [premiosEstiloUsuario, setPremiosEstiloUsuario] = useState([]);
     const [premiosOutrosEstilos, setPremiosOutrosEstilos] = useState([]);
     const [numeroMoedas, setNumeroMoedas] = useState(0);
+    const navigate  = useNavigate ();
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [modalContent, setModalContent] = useState({title: '', message: '',});
     const [formValues, setFormValues] = useState({
@@ -75,9 +77,8 @@ const MainPremios = () => {
     
       const closeModal = () => {
         setModalIsOpen(false);
-        setTimeout(() => {
-            window.location.reload();
-          }, 3000);
+        navigate('/moedas');;
+  
       };
     
 
@@ -133,6 +134,24 @@ const MainPremios = () => {
       .catch(error => {
         console.error('Erro ao obter número de moedas:', error);
       });
+
+    const getFontSizeBasedOnScreenWidth = () => {
+        const screenWidth = window.innerWidth;
+        if (screenWidth <= 1258) {
+        return '70%'; 
+        } else {
+        return '30%';
+        }
+    };
+
+    const getPositionBasedOnScreenWidth = () => {
+        const screenWidth = window.innerWidth;
+        if (screenWidth <= 1258) {
+        return '17%'; 
+        } else {
+        return '35%';
+        }
+    };  
 
     return (
         <main id="dat">
@@ -209,7 +228,11 @@ const MainPremios = () => {
                                   WebkitOverflowScrolling: 'touch',
                                   borderRadius: '4px',
                                   outline: 'none',
-                                  padding: '20px'
+                                  padding: '20px',
+                                // eslint-disable-next-line
+                                  width: getFontSizeBasedOnScreenWidth(),
+                                 // eslint-disable-next-line
+                                  left:getPositionBasedOnScreenWidth()
                                 }
                               }}
                         >
