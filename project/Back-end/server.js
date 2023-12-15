@@ -20,10 +20,7 @@ const ptdiaRoute = require('./routes/ptdiaRoute');
 const createRoute = require('./routes/createRoute');
 const resgateRoute = require('./routes/resgateRoute');
 const resgFeitosRoute = require('./routes/resgFeitosRoute');
-
-if (process.env.NODE_ENV === 'production') {
-    app.use(enforce.HTTPS({ trustProtoHeader: true }));
-}
+const editRoute = require('./routes/editRoute');
 
 app.use(cors());
 
@@ -59,6 +56,8 @@ app.post('/ptdia', verifyToken, ptdiaRoute);
 app.post('/resg', verifyToken, resgateRoute);
 
 app.post('/rfeitos', verifyToken, resgFeitosRoute);
+
+app.put('/edit', verifyToken, editRoute);
 
 app.put('/upgame',verifyToken,upGameRoute);
 
