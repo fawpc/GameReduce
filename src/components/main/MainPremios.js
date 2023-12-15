@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import styles from '../../style.module.css';
 import WithAuth from './withAuth';
 import Modal from 'react-modal';
-
+// eslint-disable-next-line
+import {useNavigate , Redirect  } from 'react-router-dom';
 function isUserLoggedIn1() {
     return !!localStorage.getItem('auth-token');
   }
@@ -17,6 +18,7 @@ const MainPremios = () => {
     const [premiosEstiloUsuario, setPremiosEstiloUsuario] = useState([]);
     const [premiosOutrosEstilos, setPremiosOutrosEstilos] = useState([]);
     const [numeroMoedas, setNumeroMoedas] = useState(0);
+    const navigate  = useNavigate ();
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [modalContent, setModalContent] = useState({title: '', message: '',});
     const [formValues, setFormValues] = useState({
@@ -75,9 +77,8 @@ const MainPremios = () => {
     
       const closeModal = () => {
         setModalIsOpen(false);
-        /*setTimeout(() => {
-            window.location.reload();
-          }, 3000);*/
+        navigate('/moedas');;
+  
       };
     
 

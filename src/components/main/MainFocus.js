@@ -106,7 +106,7 @@ const MainFocus = () => {
                                 {allFocusTimeData[3]?.tempo?.hours} Horas: {allFocusTimeData[3]?.pontos_focustime } <img src="../imagens/coin.png" alt="sino" width="30" height="30" /><br /><br />
                             </p>
                         </div>
-                    }
+                    }<br /><br /><br /><br /><br /><br /><br /><br />
                 </div>
                 <img id={styles.pac} src="../imagens/pacv1.gif" alt="propaganda" height="100%" width="5%" />
                 <img id={styles.pac1} src="../imagens/pacv2.gif" alt="propaganda" height="100%" width="5%" />

@@ -11,10 +11,17 @@ const Cronometros = ({ tempofeito, tempoMax}) => {
     }
   
     function formatTime(totalSeconds) {
-      const hours = Math.floor(totalSeconds / 3600);
-      const minutes = Math.floor((totalSeconds % 3600) / 60);
-      const seconds = totalSeconds % 60;
-      const formattedTime = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+      const isNegative = totalSeconds < 0;
+      const absSeconds = Math.abs(totalSeconds);
+      const hours = Math.floor(absSeconds / 3600);
+      const minutes = Math.floor((absSeconds % 3600) / 60);
+      const seconds = absSeconds % 60;
+      
+      const formattedHours = String(hours).padStart(2, '0');
+      const formattedMinutes = String(minutes).padStart(2, '0');
+      const formattedSeconds = String(seconds).padStart(2, '0');
+    
+      const formattedTime = `${isNegative ? '-' : ''}${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
       return formattedTime;
     }
     const [isRunning, setIsRunning] = useState(false);
@@ -37,7 +44,7 @@ const Cronometros = ({ tempofeito, tempoMax}) => {
 
     function exibirAviso30MinutosRestantes() {
       const tempoRestante = tempoDecrescenteAtual
-      if (tempoRestante <= 30 * 60) {
+      if (tempoRestante <= 30 * 60 && tempoRestante > 10 * 60) {
         console.log('Restam 30 minutos!');
         openModal('Atenção Restam Menos de 30 minutos! de Game Time', 'TEMPO RESTANTE: ');
       }
@@ -53,12 +60,19 @@ const Cronometros = ({ tempofeito, tempoMax}) => {
 
     function exibirAvisoTeste() {
       const tempoRestante = tempoDecrescenteAtual
-      if (tempoRestante <= 159 * 60) { 
+      if (tempoRestante <= 159 * 60 && tempoRestante > 30 * 60) { 
         console.log('Restam xx minutos!');
         openModal('Atenção Restam Menos de xx minutos! de Game Time', 'TEMPO RESTANTE: ');
       }
     }
 
+    function exibirAvisoEstouro() {
+      const tempoRestante = tempoDecrescenteAtual
+      if (tempoRestante < 0) { 
+        console.log('Limite estourado!');
+        openModal('Atenção você estourou seu limite de Game Time, a partir de agora há perda de pontos !!!', 'TEMPO RESTANTE: ');
+      }
+    }
 
     useEffect(() => {
       const secondsTempoMax = timeStringToSeconds(tempoMax);
@@ -83,6 +97,7 @@ const Cronometros = ({ tempofeito, tempoMax}) => {
               exibirAviso30MinutosRestantes();
               exibirAviso10MinutosRestantes();
               exibirAvisoTeste();
+              exibirAvisoEstouro();
               count = 0;
             }
             setTempoRestanteModal(formatTime(prevTempo)); 
@@ -206,9 +221,9 @@ const Cronometros = ({ tempofeito, tempoMax}) => {
       <p id={styles.cro}>{formatTime(tempoDecrescenteAtual)}</p> <br />
       <div id={styles.didadi}>
         <div id={styles.bo}>
-            <img src="../imagens/play.png" alt="start" width="90" height="90" id="play1" onClick={handleStart} />
-            <img src="../imagens/stop.png" alt="stop" width="90" height="90" id="play2" onClick={handleStop} />
-            <img src="../imagens/pause.png" alt="pause" width="90" height="90" id="play3" onClick={handlePause} />
+            <img src="../imagens/play.png" alt="start" width="90" height="90" id={styles.play1} onClick={handleStart} />
+            <img src="../imagens/stop.png" alt="stop" width="90" height="90" id={styles.play2}onClick={handleStop} />
+            <img src="../imagens/pause.png" alt="pause" width="90" height="90" id={styles.play3} onClick={handlePause} />
         </div>
       </div>
         <Modal

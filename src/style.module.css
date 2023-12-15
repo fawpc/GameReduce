@@ -446,6 +446,20 @@ h5 a{
     font-size: x-large;
 }
 
+#play1:hover,
+#play2:hover,
+#play3:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
+#play1:active,
+#play2:active,
+#play3:active {
+  opacity: 0.7;
+  transition: opacity 0.1s ease;
+}
+
 @media only screen and (max-width: 1290px) {
     #logo {
         font-size: 3.5vh;
