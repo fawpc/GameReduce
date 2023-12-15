@@ -72,7 +72,7 @@ const Cronometro = ({ focusfeito, tempo}) => {
     const tempoRestante = focusDecrescenteAtual
     if (tempoRestante < 0) { 
       console.log('Limite ultrapassado!');
-      openModal('Atenção você já cumpriu sua mete de Focus Time, mas sinta-se a vontade para continuar focado /o/', 'TEMPO RESTANTE: ');
+      openModal('Atenção você já cumpriu sua meta de Focus Time !!! Mas sinta-se a vontade para continuar focado /o/', 'TEMPO RESTANTE: ');
     }
   }
     useEffect(() => {
